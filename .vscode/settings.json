@@ -3,5 +3,8 @@
         "activityBar.background": "#5A140B",
         "titleBar.activeBackground": "#7E1B0F",
         "titleBar.activeForeground": "#FFFCFC"
-    }
+    },
+    "cSpell.words": [
+        "Appoinment"
+    ]
 }
