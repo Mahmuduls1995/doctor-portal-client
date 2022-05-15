@@ -6,17 +6,50 @@ import Home from "./Pages/Home/Home";
 import Review from "./Pages/Review/Review";
 
 import Navbar from "./Pages/Shared/Navbar";
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/Login/SignUp';
+import RequiredAuth from './Pages/Shared/RequiredAuth';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import MyAppointment from './Pages/Dashboard/MyAppointment';
+import MyReview from './Pages/Dashboard/MyReview';
+import MyHistory from './Pages/Dashboard/MyHistory';
 function App() {
+
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   return (
-    <div>
+    <div className="mx-w-7xl mx-auto px-12">
       <Navbar></Navbar>
 
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route path="/about" element={<About></About>} />
-        <Route path="/review" element={<Review></Review>} />
-        <Route path="/appoinment" element={<Appoinment></Appoinment>} />
+        {/* <Route path="/review" element={<Review></Review>} /> */}
+        <Route path="/appoinment" element={
+          <RequiredAuth>
+            <Appoinment></Appoinment>
+          </RequiredAuth>
+        } />
+        <Route path="/dashboard" element={<RequiredAuth><Dashboard></Dashboard></RequiredAuth>}>
+          <Route index element={<MyAppointment></MyAppointment>}></Route>
+          <Route path="review" element={<MyReview></MyReview>}></Route>
+          <Route path="history" element={<MyHistory></MyHistory>}></Route>
+
+        </Route>
+        <Route path="/login" element={<Login></Login>} />
+        <Route path="/signup" element={<SignUp></SignUp>} />
       </Routes>
+      <ToastContainer></ToastContainer>
     </div>
   );
 }
