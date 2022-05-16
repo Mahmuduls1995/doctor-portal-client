@@ -1,13 +1,7 @@
 import React, { useEffect } from 'react';
-import AOS from "aos";
-import "aos/dist/aos.css";
-const Service = ({ service, setTreatment }) => {
 
-    useEffect(() => {
-        AOS.init();
-        AOS.refresh();
-      }, []);
-    const { name, slots } = service
+const Service = ({ service, setTreatment }) => {
+    const { name, slots } = service;
     return (
         <div data-aos="flip-left" data-aos-duration="3000" class="card lg:max-w-lg bg-base-100 shadow-xl">
             <div  class="card-body text-center">
