@@ -47,6 +47,7 @@ const AddDoctor = () => {
                     img: img
                 }
 
+
                 // send to your database 
                 fetch('http://localhost:5000/doctor', {
                     method: 'POST',
@@ -132,7 +133,7 @@ const AddDoctor = () => {
                         <label className="label">
                             <span className="label-text">Specialty</span>
                         </label>
-                        <select  {...register("Specialty")} class=" border-gray-400 select mb-2 w-full max-w-xs">
+                        <select  {...register("specialty")} class=" border-gray-400 select mb-2 w-full max-w-xs">
 
                             {
                                 services.map(service => <option
